@@ -15,7 +15,8 @@ npm
     
 2. Install dependencies:
     ```bash
-    npm install
+    npm init -y
+    npm install ws
 
 3. Start the server
     ```bash
@@ -26,3 +27,4 @@ npm
     The API is available at: http://localhost:4000/
 
 ## Screenshot
+![image](https://github.com/user-attachments/assets/d63217f4-e3ef-4e22-93a7-13f86889dcad)
