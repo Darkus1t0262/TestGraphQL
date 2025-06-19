@@ -1,23 +1,25 @@
 // index.js
 const { ApolloServer, gql } = require('apollo-server');
 
-// Definir esquema
+// 1️⃣  GraphQL schema
 const typeDefs = gql`
-    type Query {
-        hello: String
-    }
+  type Query {
+    hello(name: String = "World"): String!
+  }
 `;
 
-// Resolver para el esquema
+// 2️⃣  Resolvers
 const resolvers = {
-    Query: {
-        hello: () => "¡Hola Mundo desde GraphQL!",
-    },
+  Query: {
+    hello: (_, { name }) => `Hello, ${name}!`,
+  },
 };
 
-// Configurar servidor
-const server = new ApolloServer({ typeDefs, resolvers });
+// 3️⃣  Start the server
+async function start() {
+  const server = new ApolloServer({ typeDefs, resolvers });
+  const { url } = await server.listen({ port: 4000 });
+  console.log(`🚀  GraphQL ready at ${url}`);
+}
 
-server.listen().then(({ url }) => {
-    console.log(`Servidor listo en ${url}`);
-});
+start();
